@@ -1,0 +1,109 @@
+﻿<Window x:Class="MemoryScope.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MemoryScope"
+        mc:Ignorable="d"
+        Title="Калькулятор памяти" Height="450" Width="800" ResizeMode="NoResize" Topmost="False">
+    <Grid x:Name="MainGrid" RenderTransformOrigin="0.5,0.5" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="189*"></RowDefinition>
+            <RowDefinition Height="232*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button x:Name="AddItem" Grid.Column="0" Grid.Row="0" Content="Добавить элемент" HorizontalAlignment="Left" Margin="43,26,0,0" VerticalAlignment="Top" Width="125" Height="42" Click="AddItem_Click"/>
+        <StackPanel Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Left" Height="153" Margin="10,26,0,0" VerticalAlignment="Top" Width="129">
+            <TextBlock x:Name="El1" Text="" Height="22"/>
+            <TextBlock x:Name="El2" Text="" Height="22"/>
+            <TextBlock x:Name="El3" Text="" Height="22"/>
+            <TextBlock x:Name="El4" Text="" Height="22"/>
+            <TextBlock x:Name="El5" Text="" Height="22"/>
+            <TextBlock x:Name="El6" Text="" Height="22"/>
+            <TextBlock x:Name="El7" Text="" Height="22"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Left" Height="153" Margin="139,26,0,0" VerticalAlignment="Top" Width="39">
+            <Button x:Name="Add1" Content="Add" Height="22" IsEnabled="False" Click="Add1_Click"/>
+            <Button x:Name="Add2" Content="Add" Height="22" IsEnabled="False" Click="Add1_Click"/>
+            <Button x:Name="Add3" Content="Add" Height="22" IsEnabled="False" Click="Add1_Click"/>
+            <Button x:Name="Add4" Content="Add" Height="22" IsEnabled="False" Click="Add1_Click"/>
+            <Button x:Name="Add5" Content="Add" Height="22" IsEnabled="False" Click="Add1_Click"/>
+            <Button x:Name="Add6" Content="Add" Height="22" IsEnabled="False" Click="Add1_Click"/>
+            <Button x:Name="Add7" Content="Add" Height="22" IsEnabled="False" Click="Add1_Click"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="2" HorizontalAlignment="Left" Height="153" Margin="10,26,0,0" VerticalAlignment="Top" Width="129">
+            <TextBlock x:Name="El8" Text="" Height="22"/>
+            <TextBlock x:Name="El9" Text="" Height="22"/>
+            <TextBlock x:Name="El10" Text="" Height="22"/>
+            <TextBlock x:Name="El11" Text="" Height="22"/>
+            <TextBlock x:Name="El12" Text="" Height="22"/>
+            <TextBlock x:Name="El13" Text="" Height="22"/>
+            <TextBlock x:Name="El14" Text="" Height="22"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="2" HorizontalAlignment="Left" Height="153" Margin="139,26,0,0" VerticalAlignment="Top" Width="39">
+            <Button x:Name="Add8" Content="Add" Height="22" IsEnabled="False"/>
+            <Button x:Name="Add9" Content="Add" Height="22" IsEnabled="False"/>
+            <Button x:Name="Add10" Content="Add" Height="22" IsEnabled="False"/>
+            <Button x:Name="Add11" Content="Add" Height="22" IsEnabled="False"/>
+            <Button x:Name="Add12" Content="Add" Height="22" IsEnabled="False"/>
+            <Button x:Name="Add13" Content="Add" Height="22" IsEnabled="False"/>
+            <Button x:Name="Add14" Content="Add" Height="22" IsEnabled="False"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Column="3" HorizontalAlignment="Left" Height="153" Margin="10,26,0,0" VerticalAlignment="Top" Width="129">
+            <TextBlock x:Name="El15" Text="" Height="22"/>
+            <TextBlock x:Name="El16" Text="" Height="22"/>
+            <TextBlock x:Name="El17" Text="" Height="22"/>
+            <TextBlock x:Name="El18" Text="" Height="22"/>
+            <TextBlock x:Name="El19" Text="" Height="22"/>
+            <TextBlock x:Name="El20" Text="" Height="22"/>
+            <TextBlock x:Name="El21" Text="" Height="22"/>
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Background="Pink" Height="206" Margin="110,16,0,0" Grid.Row="1" VerticalAlignment="Top" Width="178">
+            <Label Content="Stack" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="S1" Text=""/>
+            <TextBlock x:Name="S2" Text=""/>
+            <TextBlock x:Name="S3" Text=""/>
+            <TextBlock x:Name="S4" Text=""/>
+            <TextBlock x:Name="S5" Text=""/>
+            <TextBlock x:Name="S6" Text=""/>
+            <TextBlock x:Name="S7" Text=""/>
+        </StackPanel>
+        <StackPanel Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Left" Background="SteelBlue" Height="206" Margin="110,16,0,0" Grid.Row="1" VerticalAlignment="Top" Width="178">
+            <Label Content="Heap" HorizontalAlignment="Center"/>
+            <TextBlock x:Name="H1" Text=""/>
+            <TextBlock x:Name="H2" Text=""/>
+            <TextBlock x:Name="H3" Text=""/>
+            <TextBlock x:Name="H4" Text=""/>
+            <TextBlock x:Name="H5" Text=""/>
+            <TextBlock x:Name="H6" Text=""/>
+            <TextBlock x:Name="H7" Text=""/>
+        </StackPanel>
+        <WrapPanel x:Name="InputPanel" Grid.ColumnSpan="3" Margin="143,52,75,192" Grid.RowSpan="2" Background="Gray" IsEnabled="False" Visibility="Hidden">
+            <Label Content="Значения" Width="180"/>
+            <Label Content="Ссылочные" Width="180"/>
+            <RadioButton x:Name="NameByte" GroupName="SelectionType" Content="byte sbyte short ushort" Width="174" Height="23"/>
+            <RadioButton x:Name="NameObject" GroupName="SelectionType" Content="object" Width="174" Height="23"/>
+            <RadioButton x:Name="NameInt" GroupName="SelectionType" Content="int uint long ulong" Width="174" Height="23"/>
+            <RadioButton x:Name="NameString" GroupName="SelectionType" Content="string" Width="174" Height="23"/>
+            <RadioButton x:Name="NameFloat" GroupName="SelectionType" Content="float double" Width="174" Height="23"/>
+            <RadioButton x:Name="NameClass" GroupName="SelectionType" Content="class interface" Width="174" Height="23"/>
+            <RadioButton x:Name="NameDec" GroupName="SelectionType" Content="deciaml bool char" Width="174" Height="23"/>
+            <RadioButton x:Name="NameDelegate" GroupName="SelectionType" Content="delegate" Width="174" Height="23"/>
+            <RadioButton x:Name="NameEnum" GroupName="SelectionType" Content="enum struct" Width="174" Height="23"/>
+            <CheckBox Content="ref"/>
+            <CheckBox Content="out"/>
+            <Button Content="Добавить" Click="Button_Click"/>
+
+        </WrapPanel>
+        <StackPanel x:Name="AddNamePanel" Grid.ColumnSpan="2" Grid.Column="1" Background="Gray" Visibility="Hidden" HorizontalAlignment="Left" Height="76" Margin="115,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="168">
+            <Label Content="Введите имя переменной"/>
+            <TextBox x:Name="NameField" Height="23" TextWrapping="Wrap" Text=""/>
+            <Button x:Name="AddName" Content="Добавить" Click="AddName_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
