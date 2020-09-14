@@ -28,13 +28,13 @@
             <TextBlock x:Name="El7" Text="" Height="22"/>
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Left" Height="153" Margin="139,26,0,0" VerticalAlignment="Top" Width="39">
-            <Button x:Name="Add1" Content="Add" Height="22" IsEnabled="False" Click="Add1_Click"/>
-            <Button x:Name="Add2" Content="Add" Height="22" IsEnabled="False" Click="Add1_Click"/>
-            <Button x:Name="Add3" Content="Add" Height="22" IsEnabled="False" Click="Add1_Click"/>
-            <Button x:Name="Add4" Content="Add" Height="22" IsEnabled="False" Click="Add1_Click"/>
-            <Button x:Name="Add5" Content="Add" Height="22" IsEnabled="False" Click="Add1_Click"/>
-            <Button x:Name="Add6" Content="Add" Height="22" IsEnabled="False" Click="Add1_Click"/>
-            <Button x:Name="Add7" Content="Add" Height="22" IsEnabled="False" Click="Add1_Click"/>
+            <Button x:Name="Add1" Content="Add" Height="22" IsEnabled="False" Click="AddItem_Click"/>
+            <Button x:Name="Add2" Content="Add" Height="22" IsEnabled="False" Click="AddItem_Click"/>
+            <Button x:Name="Add3" Content="Add" Height="22" IsEnabled="False" Click="AddItem_Click"/>
+            <Button x:Name="Add4" Content="Add" Height="22" IsEnabled="False" Click="AddItem_Click"/>
+            <Button x:Name="Add5" Content="Add" Height="22" IsEnabled="False" Click="AddItem_Click"/>
+            <Button x:Name="Add6" Content="Add" Height="22" IsEnabled="False" Click="AddItem_Click"/>
+            <Button x:Name="Add7" Content="Add" Height="22" IsEnabled="False" Click="AddItem_Click"/>
         </StackPanel>
         <StackPanel Orientation="Vertical" Grid.Column="2" HorizontalAlignment="Left" Height="153" Margin="10,26,0,0" VerticalAlignment="Top" Width="129">
             <TextBlock x:Name="El8" Text="" Height="22"/>

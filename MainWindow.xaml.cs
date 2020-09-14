@@ -26,11 +26,12 @@ namespace MemoryScope
         byte itemTypePosition;      //Расположение: 0 - stack, 1 - heap
         TextBlock[] blockLeft;      //Массив значений в стек
         TextBlock[] blockRight;     //Массив значений в хип
-        TextBlock[] mainBlock1;
-        TextBlock[] mainBlock2;
-        TextBlock[] mainBlock3;
+        TextBlock[] mainBlock1;     //Массив записей 1 верхнего блока
+        TextBlock[] mainBlock2;     //Массив записей 2 верхнего блока
+        Button[] buttons;           //Массив кнопок
+        //TextBlock[] mainBlock3;
 
-        int whatButton = 0;         //Переменная определяет какой кнопкой добавлено дополнительное значение
+        int whatButton = 0;         //Переменная определяет какой кнопкой добавлено дополнительное значение. 0 - общая кнопка
         string outputValue;         //Переменная для вывода
 
 
@@ -44,16 +45,26 @@ namespace MemoryScope
             blockRight = new TextBlock[] { H1, H1, H3, H4, H5, H6, H7 };
             mainBlock1 = new TextBlock[] { El1, El2, El3, El4, El5, El6, El7 };
             mainBlock2 = new TextBlock[] { El8, El9, El10, El11, El12, El13, El14 };
-            mainBlock3 = new TextBlock[] { El15, El16, El17, El18, El19, El20, El21 };
+            //mainBlock3 = new TextBlock[] { El15, El16, El17, El18, El19, El20, El21 };
+            //buttons = new Button[] { AddItem, Add1, Add2, Add3, Add4, Add5, Add6, Add7, Add8, Add9, Add10, Add11, Add13, Add14 };
 
 
         }
 
 
-        private void AddItem_Click(object sender, RoutedEventArgs e)    //Активируем панель ввода
+        private void AddItem_Click(object sender, RoutedEventArgs e )    //Активируем панель выбора элемента
         {
             InputPanel.IsEnabled = true;
             InputPanel.Visibility = Visibility.Visible;
+            
+            Button sendNameO = (Button)sender;
+            string sendName = sendNameO.Name.ToString();
+            sendName = sendName.Substring(3);                           //Узнаем какую кнопку нажал юзер
+            if (sendName == "Item")
+                whatButton = 0;                                         //Юзер нажал главную
+            else
+                whatButton = Convert.ToInt32(sendName);                 //Юзер нажал одну из дополнительных. Получаем индекс.
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)     //Проверяем какая радиокнопка выбрана
@@ -102,7 +113,7 @@ namespace MemoryScope
             else if (NameEnum.IsChecked == true)
             {
                 itemType = "enum struct";
-                itemTypePosition = 1;
+                itemTypePosition = 0;
             }
             else
             {
@@ -114,174 +125,154 @@ namespace MemoryScope
 
         }
 
-        private void AddName_Click(object sender, RoutedEventArgs e)
+        private void AddName_Click(object sender, RoutedEventArgs e)     //Определение куда записывать данные. В стек или хип.
         {
             itemName = NameField.Text;
             outputValue = $"{itemType}.{itemName}";
 
-            if (itemTypePosition == 0)
+            if (itemTypePosition == 0)                                  
             {
+                EnterBlock(blockLeft);
+                
+            }
+            if (itemTypePosition == 1)
+            {
+                EnterBlock(blockRight);
 
-                foreach (TextBlock i in blockLeft)
+                foreach (TextBlock i in blockLeft)                      //Если данные в хипе, создаем запись со ссылкой в стеке
                 {
                     if ((string)i.Text == "")
                     {
-                        i.Text = outputValue;
-                        InputPanel.IsEnabled = false;
-                        InputPanel.Visibility = Visibility.Hidden;
-                        AddNamePanel.Visibility = Visibility.Hidden;
-                        if (whatButton == 0)
-                        {
-                            foreach (TextBlock j in mainBlock1)
-                            {
-                                if ((string)j.Text == "")
-                                {
-                                    j.Text = outputValue;
-                                    if (j.Name == "El1")
-                                        Add1.IsEnabled = true;
-                                    else if (j.Name == "El2")
-                                        Add2.IsEnabled = true;
-                                    else if (j.Name == "El3")
-                                        Add3.IsEnabled = true;
-                                    else if (j.Name == "El4")
-                                        Add4.IsEnabled = true;
-                                    else if (j.Name == "El5")
-                                        Add5.IsEnabled = true;
-                                    else if (j.Name == "El6")
-                                        Add6.IsEnabled = true;
-                                    else if (j.Name == "El7")
-                                        Add7.IsEnabled = true;
-                                    break;
-                                }
-                                whatButton = 0;
-
-
-                            }   
-                            break;
-                        }
-                        else if (whatButton > 0 && whatButton <= 7)
-                        {
-                            foreach (TextBlock j in mainBlock2)
-                            {
-                                
-                                if ((string)j.Text == "" && whatButton == Convert.ToInt32(j.Name.Substring(2)) - 7)
-                                {
-                                    j.Text = outputValue;
-                                    if (j.Name == "El8")
-                                        Add1.IsEnabled = true;
-                                    else if (j.Name == "E9")
-                                        Add2.IsEnabled = true;
-                                    else if (j.Name == "El10")
-                                        Add3.IsEnabled = true;
-                                    else if (j.Name == "El11")
-                                        Add4.IsEnabled = true;
-                                    else if (j.Name == "El125")
-                                        Add5.IsEnabled = true;
-                                    else if (j.Name == "El13")
-                                        Add6.IsEnabled = true;
-                                    else if (j.Name == "El14")
-                                        Add7.IsEnabled = true;
-                                    break;
-                                }
-                                
-
-
-                            }
-                            whatButton = 0;
-                            break;
-                        }
+                        i.Text = $"Ссылка на: {outputValue}";
+                        break;
                     }
                 }
             }
-            if (itemTypePosition == 1)
-                
-                foreach (TextBlock i in blockRight)
-                {
-                    if ((string)i.Text == "")
-                    {
-                        i.Text = outputValue;
-                        InputPanel.IsEnabled = false;
-                        InputPanel.Visibility = Visibility.Hidden;
-                        AddNamePanel.Visibility = Visibility.Hidden;
-                        if (whatButton == 0)
-                        {
-                            foreach (TextBlock j in mainBlock1)
-                            {
-                                if ((string)j.Text == "")
-                                {
-                                    j.Text = outputValue;
-                                    if (j.Name == "El1")
-                                        Add1.IsEnabled = true;
-                                    else if (j.Name == "El2")
-                                        Add2.IsEnabled = true;
-                                    else if (j.Name == "El3")
-                                        Add3.IsEnabled = true;
-                                    else if (j.Name == "El4")
-                                        Add4.IsEnabled = true;
-                                    else if (j.Name == "El5")
-                                        Add5.IsEnabled = true;
-                                    else if (j.Name == "El6")
-                                        Add6.IsEnabled = true;
-                                    else if (j.Name == "El7")
-                                        Add7.IsEnabled = true;
-                                    break;
-
-                                }
-                                whatButton = 0;
-                            }
-                            break;
-                        }
-                        else if (whatButton > 0 && whatButton <= 7)
-                        {
-                            foreach (TextBlock j in mainBlock2)
-                            {
-                                if ((string)j.Text == "" && whatButton == Convert.ToInt32(j.Name.Substring(2)) - 7)
-                                {
-                                    j.Text = outputValue;
-                                    if (j.Name == "El8")
-                                        Add1.IsEnabled = true;
-                                    else if (j.Name == "E9")
-                                        Add2.IsEnabled = true;
-                                    else if (j.Name == "El10")
-                                        Add3.IsEnabled = true;
-                                    else if (j.Name == "El11")
-                                        Add4.IsEnabled = true;
-                                    else if (j.Name == "El125")
-                                        Add5.IsEnabled = true;
-                                    else if (j.Name == "El13")
-                                        Add6.IsEnabled = true;
-                                    else if (j.Name == "El14")
-                                        Add7.IsEnabled = true;
-                                    break;
-                                }
-                                
-
-
-                            }
-                            whatButton = 0;
-                            break;
-                            
-                        }
-                    }
-
-                }
-
 
         }
 
-        private void Add1_Click(object sender, RoutedEventArgs e)
+        
+
+        private void EnterBlock(TextBlock[] textMassive)
         {
-            Button sendNameO = (Button)sender;
-            string sendName = sendNameO.Name.ToString();
-            sendName = sendName.Substring(3);
-            whatButton = Convert.ToInt32(sendName);
+            
+            foreach (TextBlock i in textMassive)
+            {
+                if ((string)i.Text == "")
+                {
+                    
+                    i.Text = outputValue;
+                    
+                    InputPanel.IsEnabled = false;
+                    InputPanel.Visibility = Visibility.Hidden;
+                    AddNamePanel.Visibility = Visibility.Hidden;
+                    if (whatButton == 0)
+                    {
+                        foreach (TextBlock j in mainBlock1)
+                        {
+                            if ((string)j.Text == "")
+                            {
+                                j.Text = outputValue;
+                                if (j.Name == "El1" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                {
+                                    Add1.IsEnabled = true;
+                                    
+                                }
+                                else if (j.Name == "El2" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                {
+                                    Add2.IsEnabled = true;
+                                    
+                                }
+                                else if (j.Name == "El3" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                {
+                                    Add3.IsEnabled = true;
+                                    
+                                }
+                                else if (j.Name == "El4" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                {
+                                    Add4.IsEnabled = true;
+                                    
+                                }
+                                else if (j.Name == "El5" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                {
+                                    Add5.IsEnabled = true;
+                                    
+                                }
+                                else if (j.Name == "El6" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                {
+                                    Add6.IsEnabled = true;
+                                    
+                                }
+                                else if (j.Name == "El7" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                {
+                                    Add7.IsEnabled = true;
+                                    
+                                }
+                                break;
+                            }
+                            
 
-            AddItem_Click(sender, e);
+
+                        }
+                        break;
+                    }
+                    else if (whatButton > 0 && whatButton <= 7)
+                    {
+                        foreach (TextBlock j in mainBlock2)
+                        {
+
+                            if ((string)j.Text == "" && whatButton == Convert.ToInt32(j.Name.Substring(2)) - 7)
+                            {
+                                j.Text = outputValue;
+                                if (j.Name == "El8" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                {
+                                    Add8.IsEnabled = true;
+                                    
+                                }
+                                else if (j.Name == "E9" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                {
+                                    Add9.IsEnabled = true;
+                                    
+                                }
+                                else if (j.Name == "El10" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                {
+                                    Add10.IsEnabled = true;
+                                    
+                                }
+                                else if (j.Name == "El11" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                {
+                                    Add11.IsEnabled = true;
+                                    
+                                }
+                                else if (j.Name == "El125" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                {
+                                    Add12.IsEnabled = true;
+                                    
+                                }
+                                else if (j.Name == "El13" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                {
+                                    Add13.IsEnabled = true;
+                                    
+                                }
+                                else if (j.Name == "El14" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                {
+                                    Add14.IsEnabled = true;
+                                    
+                                }
+                                break;
+                            }
 
 
 
-
-
+                        }
+                        
+                        break;
+                    }
+                }
+            }
         }
+    
+        
     }
+
 }
