@@ -28,7 +28,7 @@ namespace MemoryScope
         TextBlock[] blockRight;     //Массив значений в хип
         TextBlock[] mainBlock1;     //Массив записей 1 верхнего блока
         TextBlock[] mainBlock2;     //Массив записей 2 верхнего блока
-        Button[] buttons;           //Массив кнопок
+        //Button[] buttons;           //Массив кнопок
         //TextBlock[] mainBlock3;
 
         int whatButton = 0;         //Переменная определяет какой кнопкой добавлено дополнительное значение. 0 - общая кнопка
@@ -129,6 +129,7 @@ namespace MemoryScope
         {
             itemName = NameField.Text;
             outputValue = $"{itemType}.{itemName}";
+            
 
             if (itemTypePosition == 0)                                  
             {
@@ -173,37 +174,37 @@ namespace MemoryScope
                             if ((string)j.Text == "")
                             {
                                 j.Text = outputValue;
-                                if (j.Name == "El1" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                if (j.Name == "El1" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate" || itemType == "object"))
                                 {
                                     Add1.IsEnabled = true;
                                     
                                 }
-                                else if (j.Name == "El2" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                else if (j.Name == "El2" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate" || itemType == "object"))
                                 {
                                     Add2.IsEnabled = true;
                                     
                                 }
-                                else if (j.Name == "El3" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                else if (j.Name == "El3" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate" || itemType == "object"))
                                 {
                                     Add3.IsEnabled = true;
                                     
                                 }
-                                else if (j.Name == "El4" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                else if (j.Name == "El4" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate" || itemType == "object"))
                                 {
                                     Add4.IsEnabled = true;
                                     
                                 }
-                                else if (j.Name == "El5" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                else if (j.Name == "El5" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate" || itemType == "object"))
                                 {
                                     Add5.IsEnabled = true;
                                     
                                 }
-                                else if (j.Name == "El6" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                else if (j.Name == "El6" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate" || itemType == "object"))
                                 {
                                     Add6.IsEnabled = true;
                                     
                                 }
-                                else if (j.Name == "El7" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                else if (j.Name == "El7" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate" || itemType == "object"))
                                 {
                                     Add7.IsEnabled = true;
                                     
@@ -220,44 +221,44 @@ namespace MemoryScope
                     {
                         foreach (TextBlock j in mainBlock2)
                         {
-
-                            if ((string)j.Text == "" && whatButton == Convert.ToInt32(j.Name.Substring(2)) - 7)
+                            
+                            if ((string)j.Text == "" && (whatButton == (Convert.ToInt32(j.Name.Substring(2))) - 7))
                             {
-                                j.Text = outputValue;
-                                if (j.Name == "El8" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                
+                                if (j.Name == "El8" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate") && whatButton == 1)
                                 {
                                     Add8.IsEnabled = true;
-                                    
+                                    j.Text = $"{El1.Text}.{itemName}";
                                 }
-                                else if (j.Name == "E9" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                else if (j.Name == "E9" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate") && whatButton == 2)
                                 {
                                     Add9.IsEnabled = true;
-                                    
+                                    j.Text = $"{El2.Text}.{itemName}";
                                 }
-                                else if (j.Name == "El10" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                else if (j.Name == "El10" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate") && whatButton == 3)
                                 {
                                     Add10.IsEnabled = true;
-                                    
+                                    j.Text = $"{El3.Text}.{itemName}";
                                 }
-                                else if (j.Name == "El11" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                else if (j.Name == "El11" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate") && whatButton == 4)
                                 {
                                     Add11.IsEnabled = true;
-                                    
+                                    j.Text = $"{El4.Text}.{itemName}";
                                 }
-                                else if (j.Name == "El125" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                else if (j.Name == "El125" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate") && whatButton == 5)
                                 {
                                     Add12.IsEnabled = true;
-                                    
+                                    j.Text = $"{El5.Text}.{itemName}";
                                 }
-                                else if (j.Name == "El13" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                else if (j.Name == "El13" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate") && whatButton == 6)
                                 {
                                     Add13.IsEnabled = true;
-                                    
+                                    j.Text = $"{El6.Text}.{itemName}";
                                 }
-                                else if (j.Name == "El14" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate"))
+                                else if (j.Name == "El14" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate") && whatButton == 7)
                                 {
                                     Add14.IsEnabled = true;
-                                    
+                                    j.Text = $"{El7.Text}.{itemName}";
                                 }
                                 break;
                             }
