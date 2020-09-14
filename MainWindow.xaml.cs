@@ -29,7 +29,7 @@ namespace MemoryScope
         TextBlock[] mainBlock1;     //Массив записей 1 верхнего блока
         TextBlock[] mainBlock2;     //Массив записей 2 верхнего блока
         //Button[] buttons;           //Массив кнопок
-        //TextBlock[] mainBlock3;
+        TextBlock[] mainBlock3;
 
         int whatButton = 0;         //Переменная определяет какой кнопкой добавлено дополнительное значение. 0 - общая кнопка
         string outputValue;         //Переменная для вывода
@@ -45,7 +45,7 @@ namespace MemoryScope
             blockRight = new TextBlock[] { H1, H1, H3, H4, H5, H6, H7 };
             mainBlock1 = new TextBlock[] { El1, El2, El3, El4, El5, El6, El7 };
             mainBlock2 = new TextBlock[] { El8, El9, El10, El11, El12, El13, El14 };
-            //mainBlock3 = new TextBlock[] { El15, El16, El17, El18, El19, El20, El21 };
+            mainBlock3 = new TextBlock[] { El15, El16, El17, El18, El19, El20, El21 };
             //buttons = new Button[] { AddItem, Add1, Add2, Add3, Add4, Add5, Add6, Add7, Add8, Add9, Add10, Add11, Add13, Add14 };
 
 
@@ -154,7 +154,7 @@ namespace MemoryScope
 
         
 
-        private void EnterBlock(TextBlock[] textMassive)
+        private void EnterBlock(TextBlock[] textMassive)    //Определение блока для отображение данных и активации кнопок
         {
             
             foreach (TextBlock i in textMassive)
@@ -167,11 +167,11 @@ namespace MemoryScope
                     InputPanel.IsEnabled = false;
                     InputPanel.Visibility = Visibility.Hidden;
                     AddNamePanel.Visibility = Visibility.Hidden;
-                    if (whatButton == 0)
+                    if (whatButton == 0)                               //Если нажата главная кнопка
                     {
                         foreach (TextBlock j in mainBlock1)
                         {
-                            if ((string)j.Text == "")
+                            if ((string)j.Text == "")               //Определяется текстовое поле для записи
                             {
                                 j.Text = outputValue;
                                 if (j.Name == "El1" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate" || itemType == "object"))
@@ -217,48 +217,55 @@ namespace MemoryScope
                         }
                         break;
                     }
-                    else if (whatButton > 0 && whatButton <= 7)
+                    else if (whatButton > 0 && whatButton <= 7)     //Если нажата кнопка первого блока
                     {
                         foreach (TextBlock j in mainBlock2)
                         {
                             
-                            if ((string)j.Text == "" && (whatButton == (Convert.ToInt32(j.Name.Substring(2))) - 7))
+                            if ((string)j.Text == "" && (whatButton == (Convert.ToInt32(j.Name.Substring(2))) - 7))     //Определяется текстовое поле для записи
                             {
                                 
-                                if (j.Name == "El8" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate") && whatButton == 1)
+                                if (j.Name == "El8" && whatButton == 1)
                                 {
-                                    Add8.IsEnabled = true;
                                     j.Text = $"{El1.Text}.{itemName}";
+                                    if (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate")
+                                    Add8.IsEnabled = true;
                                 }
-                                else if (j.Name == "E9" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate") && whatButton == 2)
+                                else if (j.Name == "El9" && whatButton == 2)
                                 {
-                                    Add9.IsEnabled = true;
                                     j.Text = $"{El2.Text}.{itemName}";
+                                    if (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate")
+                                    Add9.IsEnabled = true;    
                                 }
-                                else if (j.Name == "El10" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate") && whatButton == 3)
+                                else if (j.Name == "El10" && whatButton == 3)
                                 {
-                                    Add10.IsEnabled = true;
                                     j.Text = $"{El3.Text}.{itemName}";
+                                    if (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate")
+                                    Add10.IsEnabled = true;    
                                 }
-                                else if (j.Name == "El11" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate") && whatButton == 4)
+                                else if (j.Name == "El11" && whatButton == 4)
                                 {
-                                    Add11.IsEnabled = true;
                                     j.Text = $"{El4.Text}.{itemName}";
+                                    if (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate")
+                                    Add11.IsEnabled = true;    
                                 }
-                                else if (j.Name == "El125" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate") && whatButton == 5)
+                                else if (j.Name == "El12" && whatButton == 5)
                                 {
-                                    Add12.IsEnabled = true;
                                     j.Text = $"{El5.Text}.{itemName}";
+                                    if (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate")
+                                    Add12.IsEnabled = true;    
                                 }
-                                else if (j.Name == "El13" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate") && whatButton == 6)
+                                else if (j.Name == "El13" && whatButton == 6)
                                 {
-                                    Add13.IsEnabled = true;
                                     j.Text = $"{El6.Text}.{itemName}";
+                                    if (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate")
+                                    Add13.IsEnabled = true;    
                                 }
-                                else if (j.Name == "El14" && (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate") && whatButton == 7)
+                                else if (j.Name == "El14" && whatButton == 7)
                                 {
-                                    Add14.IsEnabled = true;
                                     j.Text = $"{El7.Text}.{itemName}";
+                                    if (itemType == "enum struct" || itemType == "class interface" || itemType == "delegate")
+                                    Add14.IsEnabled = true;    
                                 }
                                 break;
                             }
@@ -269,6 +276,58 @@ namespace MemoryScope
                         
                         break;
                     }
+                    else if (whatButton > 7)        //Если нажата кнопка второго блока
+                    {
+                        foreach (TextBlock j in mainBlock3)
+                        {
+
+                            if ((string)j.Text == "" && (whatButton == (Convert.ToInt32(j.Name.Substring(2))) - 7))     //Определяется текстовое поле для записи
+                            {
+
+                                if (j.Name == "El15" && whatButton == 8)
+                                {
+                                    
+                                    j.Text = $"{El1.Text}.{El8.Text}.{itemName}";
+                                }
+                                else if (j.Name == "El16" && whatButton == 9)
+                                {
+                                    
+                                    j.Text = $"{El2.Text}.{El9.Text}.{itemName}";
+                                }
+                                else if (j.Name == "El17" && whatButton == 10)
+                                {
+                                    
+                                    j.Text = $"{El3.Text}.{El10.Text}.{itemName}";
+                                }
+                                else if (j.Name == "El18" && whatButton == 11)
+                                {
+                                    
+                                    j.Text = $"{El4.Text}.{El11.Text}.{itemName}";
+                                }
+                                else if (j.Name == "El19" && whatButton == 12)
+                                {
+                                    
+                                    j.Text = $"{El5.Text}.{El12.Text}.{itemName}";
+                                }
+                                else if (j.Name == "El20" && whatButton == 13)
+                                {
+                                    
+                                    j.Text = $"{El6.Text}.{El13.Text}.{itemName}";
+                                }
+                                else if (j.Name == "El21" && whatButton == 14)
+                                {
+                                    
+                                    j.Text = $"{El7.Text}.{El14.Text}.{itemName}";
+                                }
+                                break;
+                            }
+
+
+
+                        }
+
+                        break;
+                    }
                 }
             }
         }
@@ -277,3 +336,4 @@ namespace MemoryScope
     }
 
 }
+
