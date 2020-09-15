@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MemoryScope"
         mc:Ignorable="d"
-        Title="Калькулятор памяти" Height="600" Width="1000" ResizeMode="NoResize" Topmost="False">
+        Title="Калькулятор памяти" Height="600" Width="1100" ResizeMode="NoResize" Topmost="False">
     <Grid x:Name="MainGrid" RenderTransformOrigin="0.5,0.5" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -105,5 +105,10 @@
             <TextBox x:Name="NameField" Height="23" TextWrapping="Wrap" Text=""/>
             <Button x:Name="AddName" Content="Добавить" Click="AddName_Click"/>
         </StackPanel>
+        <Button x:Name="Clear" Content="Очистить всё" HorizontalAlignment="Left" Margin="43,194,0,0" VerticalAlignment="Top" Width="125" Height="27" Click="Clear_Click"/>
+        <Button x:Name="Exit"  Grid.Column="3" HorizontalAlignment="Left" Margin="208,16,0,0" VerticalAlignment="Top" Width="48" Height="42" Click="Exit_Click">
+            <Image Source="./images/exit2.ico" Height="35" Width="35"/>
+        </Button>
+
     </Grid>
 </Window>

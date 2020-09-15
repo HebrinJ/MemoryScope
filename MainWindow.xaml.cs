@@ -30,7 +30,7 @@ namespace MemoryScope
         TextBlock[] blockRight;     //Массив значений в хип
         TextBlock[] mainBlock1;     //Массив записей 1 верхнего блока
         TextBlock[] mainBlock2;     //Массив записей 2 верхнего блока
-        //Button[] buttons;           //Массив кнопок
+        Button[] buttons;           //Массив кнопок
         TextBlock[] mainBlock3;     //Массив записей 3 верхнего блока
 
         int whatButton = 0;         //Переменная определяет какой кнопкой добавлено дополнительное значение. 0 - общая кнопка
@@ -48,7 +48,7 @@ namespace MemoryScope
             mainBlock1 = new TextBlock[] { El1, El2, El3, El4, El5, El6, El7 };
             mainBlock2 = new TextBlock[] { El8, El9, El10, El11, El12, El13, El14 };
             mainBlock3 = new TextBlock[] { El15, El16, El17, El18, El19, El20, El21 };
-            //buttons = new Button[] { AddItem, Add1, Add2, Add3, Add4, Add5, Add6, Add7, Add8, Add9, Add10, Add11, Add13, Add14 };
+            buttons = new Button[] { AddItem, Add1, Add2, Add3, Add4, Add5, Add6, Add7, Add8, Add9, Add10, Add11, Add13, Add14 };
 
 
         }
@@ -194,44 +194,56 @@ namespace MemoryScope
                                 if (j.Name == "El1" && (itemType == "struct(enum)" || itemType == "class(Ie)" || itemType == "delegate" || itemType == "object"))
                                 {
                                     Add1.IsEnabled = true;
-                                    
+
                                 }
                                 else if (j.Name == "El2" && (itemType == "struct(enum)" || itemType == "class(Ie)" || itemType == "delegate" || itemType == "object"))
                                 {
                                     Add2.IsEnabled = true;
-                                    
+
                                 }
                                 else if (j.Name == "El3" && (itemType == "struct(enum)" || itemType == "class(Ie)" || itemType == "delegate" || itemType == "object"))
                                 {
                                     Add3.IsEnabled = true;
-                                    
+
                                 }
                                 else if (j.Name == "El4" && (itemType == "struct(enum)" || itemType == "class(Ie)" || itemType == "delegate" || itemType == "object"))
                                 {
                                     Add4.IsEnabled = true;
-                                    
+
                                 }
                                 else if (j.Name == "El5" && (itemType == "struct(enum)" || itemType == "class(Ie)" || itemType == "delegate" || itemType == "object"))
                                 {
                                     Add5.IsEnabled = true;
-                                    
+
                                 }
                                 else if (j.Name == "El6" && (itemType == "struct(enum)" || itemType == "class(Ie)" || itemType == "delegate" || itemType == "object"))
                                 {
                                     Add6.IsEnabled = true;
-                                    
+
                                 }
                                 else if (j.Name == "El7" && (itemType == "struct(enum)" || itemType == "class(Ie)" || itemType == "delegate" || itemType == "object"))
                                 {
                                     Add7.IsEnabled = true;
-                                    
+
                                 }
-                                outputValueDop = "";
+                                else if ((i.Name == "S7" && i.Text != "") || (i.Name == "H7" && i.Text != ""))
+                                {
+                                MessageBox.Show("Превышено максимальное количество значений в поле");    //При привышении кол-ва строк кнопки добавления отключаются
+                                InputPanel.IsEnabled = false;
+                                InputPanel.Visibility = Visibility.Hidden;
+                                AddNamePanel.Visibility = Visibility.Hidden;
+                                foreach (Button b in buttons)
+                                    {
+                                        b.IsEnabled = false;
+                                    }
+                                }
                                 
+                                
+                                outputValueDop = "";
+
                                 break;
                             }
                             
-
 
                         }
                         break;
@@ -386,6 +398,31 @@ namespace MemoryScope
             return itemTypePosition;
         }
 
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            ClearMassive(blockLeft);
+            ClearMassive(blockRight);
+            ClearMassive(mainBlock1);
+            ClearMassive(mainBlock2);
+            ClearMassive(mainBlock3);
+            foreach (Button b in buttons)
+            {
+                b.IsEnabled = false;
+            }
+        }
+
+        private void ClearMassive(TextBlock[] textMassive)
+        {
+            foreach (TextBlock c in textMassive)
+            {
+                c.Text = "";
+            }
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 
 }
