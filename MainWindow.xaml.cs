@@ -131,6 +131,7 @@ namespace MemoryScope
         {
             itemName = NameField.Text;
             outputValue = $"{itemType} {itemName}";
+            NameField.Text = "";
 
             if (whatButton != 0)                         //Если значений добавлено не основной кнопкой пересчитываем тип значения опираясь на предыдущее
             {
@@ -422,6 +423,23 @@ namespace MemoryScope
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void CloseWindow_Click(object sender, RoutedEventArgs e)
+        {
+            InputPanel.IsEnabled = false;
+            InputPanel.Visibility = Visibility.Hidden;
+        }
+
+        private void CloseName_Click(object sender, RoutedEventArgs e)
+        {
+            AddNamePanel.Visibility = Visibility.Hidden;
+        }
+
+        private void NameField_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            AddName_Click(sender, e);
         }
     }
 

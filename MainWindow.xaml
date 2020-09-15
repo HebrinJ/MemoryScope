@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MemoryScope"
         mc:Ignorable="d"
-        Title="Калькулятор памяти" Height="600" Width="1100" ResizeMode="NoResize" Topmost="False">
+        Title="Определение размещения элементов в памяти" Height="600" Width="1100" ResizeMode="NoResize" Topmost="False" Background="LightGray">
     <Grid x:Name="MainGrid" RenderTransformOrigin="0.5,0.5" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -23,11 +23,11 @@
             <TextBlock x:Name="El2" Text="" Height="22" FontSize="14"/>
             <TextBlock x:Name="El3" Text="" Height="22" FontSize="14"/>
             <TextBlock x:Name="El4" Text="" Height="22" FontSize="14"/>
-            <TextBlock x:Name="El5" Text="" Height="22" FontSize="14"/>
+            <TextBlock x:Name="El5" Height="22" FontSize="14"/>
             <TextBlock x:Name="El6" Text="" Height="22" FontSize="14"/>
             <TextBlock x:Name="El7" Text="" Height="22" FontSize="14"/>
         </StackPanel>
-        <StackPanel Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Left" Height="153" Margin="139,26,0,0" VerticalAlignment="Top" Width="39">
+        <StackPanel Orientation="Vertical" Grid.Column="1" HorizontalAlignment="Left" Height="160" Margin="139,26,0,0" VerticalAlignment="Top" Width="39">
             <Button x:Name="Add1" Content="Add" Height="22" IsEnabled="False" Click="AddItem_Click"/>
             <Button x:Name="Add2" Content="Add" Height="22" IsEnabled="False" Click="AddItem_Click"/>
             <Button x:Name="Add3" Content="Add" Height="22" IsEnabled="False" Click="AddItem_Click"/>
@@ -45,7 +45,7 @@
             <TextBlock x:Name="El13" Text="" Height="22" FontSize="14"/>
             <TextBlock x:Name="El14" Text="" Height="22" FontSize="14"/>
         </StackPanel>
-        <StackPanel Orientation="Vertical" Grid.Column="2" HorizontalAlignment="Left" Height="153" Margin="139,26,0,0" VerticalAlignment="Top" Width="39">
+        <StackPanel Orientation="Vertical" Grid.Column="2" HorizontalAlignment="Left" Height="160" Margin="139,26,0,0" VerticalAlignment="Top" Width="39">
             <Button x:Name="Add8" Content="Add" Height="22" IsEnabled="False" Click="AddItem_Click"/>
             <Button x:Name="Add9" Content="Add" Height="22" IsEnabled="False" Click="AddItem_Click"/>
             <Button x:Name="Add10" Content="Add" Height="22" IsEnabled="False" Click="AddItem_Click"/>
@@ -63,29 +63,60 @@
             <TextBlock x:Name="El20" Text="" Height="22" FontSize="14"/>
             <TextBlock x:Name="El21" Text="" Height="22" FontSize="14"/>
         </StackPanel>
-        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Background="Pink" Height="206" Margin="110,16,0,0" Grid.Row="1" VerticalAlignment="Top" Width="278">
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Left" Background="Pink" Height="217" Margin="110,16,0,0" Grid.Row="1" VerticalAlignment="Top" Width="329">
             <Label Content="Stack" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18"/>
-            <TextBlock x:Name="S1" Text="" FontSize="14" Height="24"/>
-            <TextBlock x:Name="S2" Text="" FontSize="14" Height="24"/>
-            <TextBlock x:Name="S3" Text="" FontSize="14" Height="24"/>
-            <TextBlock x:Name="S4" Text="" FontSize="14" Height="24"/>
-            <TextBlock x:Name="S5" Text="" FontSize="14" Height="24"/>
-            <TextBlock x:Name="S6" Text="" FontSize="14" Height="24"/>
-            <TextBlock x:Name="S7" Text="" FontSize="14" Height="24"/>
+            <Border BorderThickness="1" BorderBrush="Black">
+                <TextBlock x:Name="S1" Text="" FontSize="14" Height="24" />
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black">
+                <TextBlock x:Name="S2" Text="" FontSize="14" Height="24"/>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black">
+                <TextBlock x:Name="S3" Text="" FontSize="14" Height="24"/>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black">
+                <TextBlock x:Name="S4" Text="" FontSize="14" Height="24"/>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black">
+                <TextBlock x:Name="S5" Text="" FontSize="14" Height="24"/>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black">
+                <TextBlock x:Name="S6" Text="" FontSize="14" Height="24"/>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black">
+                <TextBlock x:Name="S7" Text="" FontSize="14" Height="24"/>
+            </Border>
         </StackPanel>
-        <StackPanel Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Left" Background="SteelBlue" Height="206" Margin="110,16,0,0" Grid.Row="1" VerticalAlignment="Top" Width="277">
+        <StackPanel Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Left" Background="SteelBlue" Height="217" Margin="109,16,0,0" Grid.Row="1" VerticalAlignment="Top" Width="329">
             <Label Content="Heap" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18"/>
-            <TextBlock x:Name="H1" Text="" FontSize="14" Height="24"/>
-            <TextBlock x:Name="H2" Text="" FontSize="14" Height="24"/>
-            <TextBlock x:Name="H3" Text="" FontSize="14" Height="24"/>
-            <TextBlock x:Name="H4" Text="" FontSize="14" Height="24"/>
-            <TextBlock x:Name="H5" Text="" FontSize="14" Height="24"/>
-            <TextBlock x:Name="H6" Text="" FontSize="14" Height="24"/>
-            <TextBlock x:Name="H7" Text="" FontSize="14" Height="24"/>
+            <Border BorderThickness="1" BorderBrush="Black">
+                <TextBlock x:Name="H1" Text="" FontSize="14" Height="24"/>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black">
+                <TextBlock x:Name="H2" Text="" FontSize="14" Height="24"/>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black">
+                <TextBlock x:Name="H3" Text="" FontSize="14" Height="24"/>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black">
+                <TextBlock x:Name="H4" Text="" FontSize="14" Height="24"/>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black">
+                <TextBlock x:Name="H5" Text="" FontSize="14" Height="24"/>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black">
+                <TextBlock x:Name="H6" Text="" FontSize="14" Height="24"/>
+            </Border>
+            <Border BorderThickness="1" BorderBrush="Black">
+                <TextBlock x:Name="H7" Text="" FontSize="14" Height="24"/>
+            </Border>
         </StackPanel>
-        <WrapPanel x:Name="InputPanel" Grid.ColumnSpan="3" Margin="143,52,75,192" Grid.RowSpan="2" Background="Gray" IsEnabled="False" Visibility="Hidden">
-            <Label Content="Значения" Width="180"/>
-            <Label Content="Ссылочные" Width="180"/>
+        <WrapPanel x:Name="InputPanel" Grid.ColumnSpan="2" Margin="0,121,169,256" Background="Gray" IsEnabled="False" Visibility="Hidden" Grid.Column="1" Grid.RowSpan="2">
+            <Label Content="Добавьте переменную или объект" Width="342" Background="Black" Foreground="White"/>
+            <Button x:Name="CloseWindow" Content="X" Width="29" Click="CloseWindow_Click" />
+
+            <Label Content="Значения" Width="180" Foreground="Black" FontWeight="DemiBold" HorizontalAlignment="Center"/>
+            <Label Content="Ссылочные" Width="180" Foreground="Black" FontWeight="DemiBold" HorizontalAlignment="Center"/>
             <RadioButton x:Name="NameByte" GroupName="SelectionType" Content="byte sbyte short ushort" Width="174" Height="23"/>
             <RadioButton x:Name="NameObject" GroupName="SelectionType" Content="object" Width="174" Height="23"/>
             <RadioButton x:Name="NameInt" GroupName="SelectionType" Content="int uint long ulong" Width="174" Height="23"/>
@@ -100,10 +131,11 @@
             <Button Content="Добавить" Click="Button_Click"/>
 
         </WrapPanel>
-        <StackPanel x:Name="AddNamePanel" Grid.ColumnSpan="2" Grid.Column="1" Background="Gray" Visibility="Hidden" HorizontalAlignment="Left" Height="76" Margin="115,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="168">
-            <Label Content="Введите имя переменной"/>
-            <TextBox x:Name="NameField" Height="23" TextWrapping="Wrap" Text=""/>
+        <StackPanel x:Name="AddNamePanel" Grid.ColumnSpan="2" Grid.Column="1" Background="Gray" Visibility="Hidden" HorizontalAlignment="Left" Height="92" Margin="115,0,0,0" Grid.Row="1" VerticalAlignment="Top" Width="168">
+            <Label Content="Введите имя переменной" Background="Black" Foreground="White"/>
+            <TextBox x:Name="NameField" Height="23" TextWrapping="Wrap" Text="" KeyDown="NameField_KeyDown"/>
             <Button x:Name="AddName" Content="Добавить" Click="AddName_Click"/>
+            <Button x:Name="CloseName" Content="Закрыть" Click="CloseName_Click"/>
         </StackPanel>
         <Button x:Name="Clear" Content="Очистить всё" HorizontalAlignment="Left" Margin="43,194,0,0" VerticalAlignment="Top" Width="125" Height="27" Click="Clear_Click"/>
         <Button x:Name="Exit"  Grid.Column="3" HorizontalAlignment="Left" Margin="208,16,0,0" VerticalAlignment="Top" Width="48" Height="42" Click="Exit_Click">
