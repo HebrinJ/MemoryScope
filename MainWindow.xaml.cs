@@ -132,19 +132,19 @@ namespace MemoryScope
             itemName = NameField.Text;
             outputValue = $"{itemType} {itemName}";
 
-            if (whatButton != 0)
+            if (whatButton != 0)                         //Если значений добавлено не основной кнопкой пересчитываем тип значения опираясь на предыдущее
             {
                 CountMassive(mainBlock1);
             }
             
 
-            if (itemTypePosition == 0)                                  
+            if (itemTypePosition == 0)                   //Значение для стека                
             {
                 EnterBlock(blockLeft);
                 
             }
             
-            else if (itemTypePosition == 1)
+            else if (itemTypePosition == 1)             //Значение для хипа
             {
                 EnterBlock(blockRight);
 
@@ -314,38 +314,38 @@ namespace MemoryScope
 
                                 if (j.Name == "El15" && whatButton == 8)
                                 {
-                                    i.Text = $"{El1.Text}.{El8.Text}.{itemName}";
-                                    j.Text = $"{El1.Text}.{El8.Text}.{itemName}";
+                                    i.Text = $"{El8.Text}.{itemName}";
+                                    j.Text = $"{El8.Text}.{itemName}";
                                 }
                                 else if (j.Name == "El16" && whatButton == 9)
                                 {
-                                    i.Text = $"{El2.Text}.{El9.Text}.{itemName}";
-                                    j.Text = $"{El2.Text}.{El9.Text}.{itemName}";
+                                    i.Text = $"{El9.Text}.{itemName}";
+                                    j.Text = $"{El9.Text}.{itemName}";
                                 }
                                 else if (j.Name == "El17" && whatButton == 10)
                                 {
-                                    i.Text = $"{El3.Text}.{El10.Text}.{itemName}";
-                                    j.Text = $"{El3.Text}.{El10.Text}.{itemName}";
+                                    i.Text = $"{El10.Text}.{itemName}";
+                                    j.Text = $"{El10.Text}.{itemName}";
                                 }
                                 else if (j.Name == "El18" && whatButton == 11)
                                 {
-                                    i.Text = $"{El4.Text}.{El11.Text}.{itemName}";
-                                    j.Text = $"{El4.Text}.{El11.Text}.{itemName}";
+                                    i.Text = $"{El11.Text}.{itemName}";
+                                    j.Text = $"{El11.Text}.{itemName}";
                                 }
                                 else if (j.Name == "El19" && whatButton == 12)
                                 {
-                                    i.Text = $"{El5.Text}.{El12.Text}.{itemName}";
-                                    j.Text = $"{El5.Text}.{El12.Text}.{itemName}";
+                                    i.Text = $"{El12.Text}.{itemName}";
+                                    j.Text = $"{El12.Text}.{itemName}";
                                 }
                                 else if (j.Name == "El20" && whatButton == 13)
                                 {
-                                    i.Text = $"{El6.Text}.{El13.Text}.{itemName}";
-                                    j.Text = $"{El6.Text}.{El13.Text}.{itemName}";
+                                    i.Text = $"{El13.Text}.{itemName}";
+                                    j.Text = $"{El13.Text}.{itemName}";
                                 }
                                 else if (j.Name == "El21" && whatButton == 14)
                                 {
-                                    i.Text = $"{El7.Text}.{El14.Text}.{itemName}";
-                                    j.Text = $"{El7.Text}.{El14.Text}.{itemName}";
+                                    i.Text = $"{El14.Text}.{itemName}";
+                                    j.Text = $"{El14.Text}.{itemName}";
                                 }
                                 outputValueDop = j.Text;
                                 
@@ -365,7 +365,7 @@ namespace MemoryScope
         return outputValueDop;
         }
 
-        private byte CountMassive(TextBlock[] textMassive)
+        private byte CountMassive(TextBlock[] textMassive)          //Проверка массива на предмет изменения типа в зависимости от предыдущей записи
         {
             string symb;
             foreach (TextBlock k in textMassive)
